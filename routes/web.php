@@ -23,13 +23,16 @@ Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified'])-
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+    Route::get('/profile',[IndexController::class,'userProfile'])->name('user.profile');
+    Route::post('/user/profile/update/{id}',[IndexController::class,'userProfileUpdate'])->name('user.profile.update');
 });
 
+
+
+//ADMIN ROUTES
 Route::get('/admin',function(){
     return view('admin.adminLogin');
 });
-
-
 Route::prefix('/admin')->name('admin.')->group(function(){
     Route::middleware('guest:admin','PreventBackHistory')->group(function(){
 
