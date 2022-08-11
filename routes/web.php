@@ -25,6 +25,8 @@ Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified'])-
     })->name('dashboard');
     Route::get('/profile',[IndexController::class,'userProfile'])->name('user.profile');
     Route::post('/user/profile/update/{id}',[IndexController::class,'userProfileUpdate'])->name('user.profile.update');
+    Route::get('/change/password',[IndexController::class,'changePassword'])->name('user.changePassword');
+    Route::post('/change/password',[IndexController::class,'changePasswordUpdate'])->name('user.changePassword.update');
 });
 
 
